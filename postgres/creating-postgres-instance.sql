@@ -19,3 +19,28 @@ CREATE POSTGRES INSTANCE "DEV-POSTGRES-ONDREJBLAHA"
    COMMENT = 'First instance for "Getting started with Snowflake postgres"' ;
 
 SHOW POSTGRES INSTANCES;
+
+--------------------------------------------------------------------------------
+/* There is a need to have a connection from SQL client on the local machine to the Snowflake's postgres.
+= INGRESS network rule is needed, that needs to be attached to network policy and that policy needs to be attached to postgres instance.
+*/
+-- Create a database for network policies
+CREATE DATABASE NETWORK_CONFIG;
+
+-- Create the ingress rule
+CREATE NETWORK RULE NETWORK_CONFIG.PUBLIC.PG_INGRESS_FROM_LOCAL
+  TYPE = IPV4
+  VALUE_LIST = ('193.179.119.36/32')
+  MODE = POSTGRES_INGRESS;
+
+-- Create the network policy using the rule
+CREATE NETWORK POLICY MY_LOCAL_ACCESS_POLICY
+  ALLOWED_NETWORK_RULE_LIST = ('NETWORK_CONFIG.PUBLIC.PG_INGRESS_FROM_LOCAL')
+  COMMENT = 'Allow access from my local machine';
+
+
+-- Apply to your Postgres instance
+ALTER POSTGRES INSTANCE "DEV-POSTGRES-ONDREJBLAHA"
+  SET NETWORK_POLICY = 'MY_LOCAL_ACCESS_POLICY';
+
+
