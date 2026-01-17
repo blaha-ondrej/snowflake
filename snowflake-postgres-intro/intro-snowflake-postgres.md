@@ -236,7 +236,7 @@ WHERE NAME = 'DEV-POSTGRES-INTRODUCTION';
 | **Username** | `snowflake_admin` | `snowflake_admin` |
 | **Password** | Auto-generated password from step 3 | `rWt2AkF4dr5Z9leg6gkljha0IR0XgSPf...` |
 
-[PLACEHOLDER: Screenshot of DBeaver connection settings filled in]
+![dbeaver-postgres-connection-details](images/dbeaver-connection.png)
 
 #### Understanding Database vs Instance
 
@@ -246,7 +246,7 @@ WHERE NAME = 'DEV-POSTGRES-INTRODUCTION';
 
 ### SSL Configuration
 
-[PLACEHOLDER: Screenshot of DBeaver SSL tab]
+![dbeaver-connection-ssl](images/dbeaver-connection-ssl.png)
 
 1. Navigate to **SSL** tab in connection settings
 2. **Enable SSL**: Check "Use SSL"
