@@ -15,6 +15,32 @@
 -- =============================================
 -- PART 1: CREATE DATABASE SCHEMA
 -- =============================================
+
+-- =============================================
+-- PostgreSQL: Database and Schema Creation
+-- =============================================
+
+-- Create database for e-commerce project
+CREATE DATABASE ecommerce_db;
+
+-- Note: You need to connect to the new database before creating schema
+-- In DBeaver: right-click on ecommerce_db -> Connect
+
+-- After connecting to ecommerce_db, run:
+
+-- Create schema for transactional data
+CREATE SCHEMA IF NOT EXISTS sales_data;
+
+-- Add comments (optional)
+COMMENT ON DATABASE ecommerce_db IS 'E-commerce database for products, customers and orders';
+COMMENT ON SCHEMA sales_data IS 'Schema containing e-commerce transactional tables';
+
+-- Set search path to use the schema
+SET search_path TO sales_data;
+
+-- Now you can run your DDL commands for tables
+-- (customers, products, orders, order_items)
+
 -- E-Commerce Data Model: Customers, Products, Orders, Order Items
 
 -- Table 1: Customers
