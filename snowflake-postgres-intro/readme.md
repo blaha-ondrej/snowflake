@@ -298,6 +298,32 @@ jdbc:postgresql://abc123xyz.nchppep-zpb68379.us-west-2.aws.postgres.snowflake.ap
 ## 5. Sample Database Setup
 
 Now let's create a sample database with related tables to demonstrate the Postgres functionality.
+```sql
+-- =============================================
+-- PostgreSQL: Database and Schema Creation
+-- =============================================
+
+-- Create database for e-commerce project
+CREATE DATABASE ecommerce_db;
+
+-- Note: You need to connect to the new database before creating schema
+-- In DBeaver: right-click on ecommerce_db -> Connect
+
+-- After connecting to ecommerce_db, run:
+
+-- Create schema for transactional data
+CREATE SCHEMA IF NOT EXISTS sales_data;
+
+-- Add comments (optional)
+COMMENT ON DATABASE ecommerce_db IS 'E-commerce database for products, customers and orders';
+COMMENT ON SCHEMA sales_data IS 'Schema containing e-commerce transactional tables';
+
+-- Set search path to use the schema
+SET search_path TO sales_data;
+
+-- Now you can run your DDL commands for tables
+-- (customers, products, orders, order_items)
+```
 
 ### Creating the Data Model
 
